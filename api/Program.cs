@@ -1,4 +1,6 @@
 using api.Data;
+using api.Interfaces;
+using api.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,6 +18,9 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 39)));
 });
+
+builder.Services.AddScoped<IStockRepository, StockRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
