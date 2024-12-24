@@ -22,12 +22,24 @@ This project consists of a .NET API and a React frontend application. The API pr
    ```bash
    dotnet restore
    ```
-3. **Update the connection string in `appsettings.json`:**
+3. **Update the connection string and JWT in `appsettings.json`:**
 
    ```json
    {
      "ConnectionStrings": {
        "DefaultConnection": "Server=localhost;Port=3306;Database=<your_database>;User=<your_username>;Pwd=<your_password>;"
+     },
+     "Logging": {
+       "LogLevel": {
+         "Default": "Information",
+         "Microsoft.AspNetCore": "Warning"
+       }
+     },
+     "AllowedHosts": "*",
+     "JWT": {
+       "Issuer": "<your_issuer>",
+       "Audience": "<your_audience>",
+       "SigningKey": "<your_signing_key>" // e.g. "Iv1.1b2d3e4f5g6h7i8j9k0l"
      }
    }
    ```
